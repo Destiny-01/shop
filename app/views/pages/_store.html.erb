@@ -1,0 +1,17 @@
+<% @products.each do |product| %>
+    <div class="card col-md-3 col-sm-6 my-5">
+        <div class="card-body single-shop-product">
+        <img src="/assets/product-2.jpg" alt="">
+                  <div class="card-text">
+                <h2><a href=""><%= product.title %></a></h2>
+                <div class="product-carousel-price">
+                    <ins><%= product.price %></ins>
+                </div>  
+                
+                <div class="product-option-shop">
+                    <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
+                </div>                       
+            </div>
+        </div>
+    </div>     
+<% end %>
