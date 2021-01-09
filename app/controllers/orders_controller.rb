@@ -9,11 +9,11 @@ class OrdersController < ApplicationController
     end
 
     def new
+        @order = Order.new    
         if @cart.product_items.empty?
             redirect_to shop_url, notice: "Your Cart Is Empty"
             return
         end
-        @order = Order.new    
     end
 
     def create
