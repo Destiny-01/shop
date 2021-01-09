@@ -1,4 +1,4 @@
-class  CartsController < ApplicationController
+class  ProductItemsController < ApplicationController
     
     include CurrentCart
     before_action :set_cart, only: [:create]

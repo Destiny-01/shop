@@ -6,7 +6,13 @@
                         <p>
                             <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
                             <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
-                            <li><a href="/cart"><i class="fa fa-user"></i> My Cart</a></li>
+                            <%# <% if @cart.total_price > 0%> %>
+                                <%= link_to @cart do%>
+                                    <li><i class="fa fa-user"></i> My Cart</a></li>
+                                <% end %>
+                            <%# <% else %>                            %>
+                               <li><a href="#"><i class="fa fa-user"></i> My Cart</a></li>
+                            <%# end %>
                             <li><a href="/checkout"><i class="fa fa-user"></i> Checkout</a></li>
                         </p>
                     </div>
@@ -31,7 +37,14 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="/cart">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                        <%# <% if @cart.total_price > 0%> %>
+                            <%= link_to @cart do%>
+                                <%# <li><i class="fa fa-user"></i> My Cart</a></li> %>
+                                <%# Cart - <span class="cart-amunt"><%= number_to_currency @cart.total_price%></span> %>
+                            <% end %>
+                        <%# <% else %> %>
+                             Cart - <span class="cart-amunt">$0</span> <i class="fa fa-shopping-cart">
+                        <%# <% end %> %>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,25 @@
+<% @cart.product_items.each do |item|%>
+    <tr class="cart_item">
+        <td class="product-thumbnail">
+            <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="/assets/product-thumb-2.jpg"></a>
+        </td>
+
+        <td class="product-name">
+            <a href="single-product.html"><%= item.product.title%></a> 
+        </td>
+
+        <td class="product-price">
+            <span class="amount"><%= item.price %></span> 
+        </td>
+
+        <td class="product-quantity">
+            <div class="quantity buttons_added">
+               <%= item.quantity%>
+            </div>
+        </td>
+
+        <td class="product-subtotal">
+            <span class="amount"><%= item.total_price%></span> 
+        </td>
+    </tr>
+<% end %>

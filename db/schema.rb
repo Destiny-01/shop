@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_03_223443) do
+ActiveRecord::Schema.define(version: 2021_01_06_155716) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -43,13 +43,25 @@ ActiveRecord::Schema.define(version: 2021_01_03_223443) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.text "address"
+    t.string "city"
+    t.string "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "product_items", force: :cascade do |t|
     t.integer "product_id", null: false
     t.integer "cart_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity", default: 1
+    t.integer "order_id"
     t.index ["cart_id"], name: "index_product_items_on_cart_id"
+    t.index ["order_id"], name: "index_product_items_on_order_id"
     t.index ["product_id"], name: "index_product_items_on_product_id"
   end
 
@@ -60,8 +72,13 @@ ActiveRecord::Schema.define(version: 2021_01_03_223443) do
     t.decimal "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.bigint "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_foreign_key "product_items", "carts"
+  add_foreign_key "product_items", "orders"
   add_foreign_key "product_items", "products"
 end

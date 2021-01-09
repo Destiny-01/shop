@@ -4,10 +4,13 @@ Rails.application.routes.draw do
   root "pages#index"
   get 'shop' => 'pages#shop'
   get 'cart' => 'carts#cart'
+  get 'cartt' => 'carts#cartt'
   get 'checkout' => 'pages#checkout'
   get 'single-product' => 'pages#single-product'
   get 'store' => 'pages#store'
 
   resources :carts
   resources :product_items
+  resources :orders
+
  end

@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
 
     before_action :set_cart, only: [:show, :destroy]
-    rescue_from ActiveRecord: :RecordNotFound with: :invalid_cart
+    rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
     def new
         @cart = Cart.new
@@ -19,6 +19,10 @@ class CartsController < ApplicationController
     private
 
     def set_cart
+      @cart = Cart.find(params[[:id]])
+    end
+
+    def cart_params
         params[:cart]
     end
 
